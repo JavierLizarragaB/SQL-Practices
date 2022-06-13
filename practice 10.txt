@@ -1,0 +1,27 @@
+Database extensions
+-add more functions to your db with extensions
+-to install:
+////////////////////////////////////////////////////////////////
+CREATE EXTENSION <extension name>;
+////////////////////////////////////////////////////////////////
+Example:
+////////////////////////////////////////////////////////////////
+CREATE EXTENSION tablefunc;
+
+SELECT *
+FROM crosstab('SELECT office, 
+                      flavor,
+                      count(*)
+               FROM ice_cream_survey
+               GROUP BY office, flavor
+               ORDER BY office',
+
+              'SELECT flavor
+               FROM ice_cream_survey
+               GROUP BY flavor
+               ORDER BY flavor')
+    AS (office text,
+    chocolate bigint,
+    strawberry bigint,
+    vanilla bigint);
+////////////////////////////////////////////////////////////////

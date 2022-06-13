@@ -1,0 +1,8 @@
+PRIMARY KEY
+-unique/not null
+FOREIGN KEY
+-must exist in the original table
+UNIQUE
+-value in the column must not be repeated
+NOT null
+-value must exist
